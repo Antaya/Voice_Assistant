@@ -6,15 +6,20 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ListView
+import android.widget.ProgressBar
 import android.widget.SimpleAdapter
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
+//PWEWTX-3L52W7YTQ4
 class MainActivity : AppCompatActivity() {
 
     val TAG: String = "MainActivity"
     lateinit var requiestInput: TextInputEditText
     lateinit var podsAdapter: SimpleAdapter
+    lateinit var progressBar: ProgressBar
+
     val pods = mutableListOf<HashMap<String, String>>(
         HashMap<String, String>().apply {
             put("Title", "Title 1")
@@ -40,25 +45,29 @@ class MainActivity : AppCompatActivity() {
 
         initViews()
     }
-    fun initViews(){
-        val toolbar: MaterialToolbar= findViewById(R.id.toolbar)
+
+    fun initViews() {
+        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         requiestInput = findViewById(R.id.text_input_edit)
 
-        val podsList:ListView = findViewById(R.id.pods_list)
+        val podsList: ListView = findViewById(R.id.pods_list)
         podsAdapter = SimpleAdapter(
             applicationContext,
             pods,
             R.layout.item_pod,
-            arrayOf("Title", "Context"),
+            arrayOf("Title", "Content"),
             intArrayOf(R.id.title, R.id.content)
 
         )
         podsList.adapter = podsAdapter
+        val voiceInputButton: FloatingActionButton = findViewById(R.id.voice_input_button)
+        voiceInputButton.setOnClickListener {
+            Log.d(TAG, "FAB")
+        }
 
+        progressBar = findViewById(R.id.progress_bar)
     }
-
-
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -67,7 +76,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when (item.itemId) {
             R.id.action_stop -> {
                 Log.d(TAG, "action_stop")
                 return true

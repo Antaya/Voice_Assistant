@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/action_clear"
-        android:icon="@drawable/ic_baseline_clear_24"
+        android:icon="@drawable/ic_baseline_clear_all_24"
         android:title="@string/action_clear"
         app:showAsAction="always"
 

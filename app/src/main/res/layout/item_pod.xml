@@ -23,7 +23,7 @@
             android:textSize="24sp"
             android:textColor="@color/top_500"
             android:textStyle="bold"
-            tools:text = "Тестовый заголовок">
+            tools:text = "Title1">
 
         </TextView>
         <TextView
@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-           tools:text = "Тестовый контент">
+            android:textColor="@color/top_500"
+           tools:text = "Content1">
 
         </TextView>
 
